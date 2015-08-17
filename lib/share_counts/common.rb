@@ -68,7 +68,7 @@ module ShareCounts
           : response
 
       rescue Exception => e
-        puts "Failed #{attempts} attempt(s) - #{e} - #{url} - #{e.inspect}"
+        puts "Failed #{attempts} attempt(s) - #{e} - #{url}"
         attempts += 1
         if attempts <= 3
           retry
