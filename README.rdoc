@@ -8,20 +8,22 @@ It also supports caching with Redis both to speed things up and to reduce the ri
 
 Services currently supported:
 
-* Reddit
-* Digg
+* Reddit (broken)
 * Twitter
 * Facebook
 * LinkedIn
-* Google Buzz
+* Google Buzz (broken)
 * StumbleUpon
 * Tumblr
 
 
 == Installation
 
-Just..
-	gem install share_counts
+For Rails Gemfile:
+`gem 'share_counts'`
+
+Or manually install:
+`gem install share_counts`
 
 and then require/bundle it.
 
@@ -38,10 +40,6 @@ You can check each service individually...
     # Reddit
     ruby-1.9.2-p0 :003 > ShareCounts.reddit url
     => 5 
-    
-    # Digg
-    ruby-1.9.2-p0 :004 > ShareCounts.digg url
-    => 1 
     
     # Twitter
     ruby-1.9.2-p0 :005 > ShareCounts.twitter url
@@ -70,7 +68,7 @@ You can check each service individually...
 or you can get 'em all in one shot:
 
     ruby-1.9.2-p0 :017 > ShareCounts.all "http://vitobotta.com/awesomeprint-similar-production/"
-    => {:reddit=>5, :digg=>1, :twitter=>2, :facebook=>1, :linkedin=>2, :googlebuzz=>0, :stumbleupon=>0}
+    => {:reddit=>5, :twitter=>2, :facebook=>1, :linkedin=>2, :googlebuzz=>0, :stumbleupon=>0}
 
 
 
@@ -123,7 +121,6 @@ It's very easy to enable and use the caching:
 	# First run, values are not cached
 	ruby-1.9.2-p0 :004 > Benchmark.realtime { ShareCounts.all "http://vitobotta.com/awesomeprint-similar-production/" }
 	Making request to reddit...
-	Making request to digg...
 	Making request to twitter...
 	Making request to facebook...
 	Making request to linkedin...
@@ -135,7 +132,6 @@ It's very easy to enable and use the caching:
 	# Now values are cached
 	ruby-1.9.2-p0 :005 > Benchmark.realtime { ShareCounts.all "http://vitobotta.com/awesomeprint-similar-production/" }
 	Loaded reddit count from cache
-	Loaded digg count from cache
 	Loaded twitter count from cache
 	Loaded facebook count from cache
 	Loaded linkedin count from cache
@@ -161,7 +157,7 @@ Similarly, by default cached share counts expire in two minutes, but you can ove
 You can also get an hash having all the cached URLs with their share counts:
 
 	ruby-1.9.2-p0 :009 > ShareCounts.cached
-	 => {"http://vitobotta.com/awesomeprint-similar-production/"=>{:stumbleupon=>0, :linkedin=>2, :googlebuzz=>0, :facebook=>1, :twitter=>2, :digg=>1, :reddit=>5}}
+	 => {"http://vitobotta.com/awesomeprint-similar-production/"=>{:stumbleupon=>0, :linkedin=>2, :googlebuzz=>0, :facebook=>1, :twitter=>2, :reddit=>5}}
 
 
 And, if needed, your can clear the cached values:

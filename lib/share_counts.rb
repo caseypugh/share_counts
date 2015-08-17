@@ -14,6 +14,7 @@ module ShareCounts
     %w(twitter facebook linkedin stumbleupon tumblr)
   end
   
+  # BROKEN
   def self.reddit url, raise_exceptions = false
     try("reddit", url, raise_exceptions) {
       extract_count from_json("http://www.reddit.com/api/info.json", :url => url ), 
@@ -23,13 +24,6 @@ module ShareCounts
   
   def self.reddit_with_permalink url, raise_exceptions = false
     ShareCounts::Reddit.info_for url, raise_exceptions
-  end
-  
-  def self.digg url, raise_exceptions = false
-    try("digg", url, raise_exceptions) {
-      extract_count from_json("http://services.digg.com/2.0/story.getInfo", :links => url ), 
-        :selector => "stories/diggs"
-    }
   end
 
   def self.twitter url, raise_exceptions = false
@@ -53,6 +47,7 @@ module ShareCounts
     }
   end
 
+  # BROKEN
   def self.googlebuzz url, raise_exceptions = false 
     try("googlebuzz", url, raise_exceptions) {
       from_json("http://www.google.com/buzz/api/buzzThis/buzzCounter", 
