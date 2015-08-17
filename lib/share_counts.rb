@@ -39,7 +39,6 @@ module ShareCounts
     }
   end
 
-  # https://graph.facebook.com/fql?q=SELECT%20like_count,%20total_count,%20share_count,%20click_count,%20comment_count%20FROM%20link_stat%20WHERE%20url%20=%20%22http://sevenly.org/FightForHer%22
   def self.facebook url, raise_exceptions = false
     try("facebook", url, raise_exceptions) {
       extract_count from_json("https://graph.facebook.com/fql", :q => %{SELECT share_count FROM link_stat WHERE url="#{url}"}), 
