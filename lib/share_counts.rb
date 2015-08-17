@@ -68,6 +68,13 @@ module ShareCounts
     }
   end
 
+  def self.tumblr url, raise_exceptions = false
+    try("twitter", url, raise_exceptions) {
+      extract_count from_json( "view-source:http://api.tumblr.com/v2/share/stats", :url => url), 
+        :selector => "response/note_count"
+    }
+  end
+
   def self.all url
     supported_networks.inject({}) { |r, c| r[c.to_sym] = ShareCounts.send(c, url); r }
   end

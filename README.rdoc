@@ -15,6 +15,7 @@ Services currently supported:
 * LinkedIn
 * Google Buzz
 * StumbleUpon
+* Tumblr
 
 
 == Installation
@@ -62,6 +63,9 @@ You can check each service individually...
     ruby-1.9.2-p0 :010 > ShareCounts.googlebuzz url
     => 0 
 
+    # Tumblr
+    ruby-1.9.2-p0 :010 > ShareCounts.tumblr url
+    => 0 
 
 or you can get 'em all in one shot:
 
