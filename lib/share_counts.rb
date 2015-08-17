@@ -70,7 +70,7 @@ module ShareCounts
 
   def self.tumblr url, raise_exceptions = false
     try("twitter", url, raise_exceptions) {
-      extract_count from_json( "view-source:http://api.tumblr.com/v2/share/stats", :url => url), 
+      extract_count from_json("http://api.tumblr.com/v2/share/stats", :url => url), 
         :selector => "response/note_count"
     }
   end
