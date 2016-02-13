@@ -4,10 +4,10 @@ $:.push File.expand_path("../lib/share_counts", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "share_counts"
-  s.version     = "0.1.5"
+  s.version     = "0.1.6"
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Vito Botta"]
-  s.email       = ["vito@botta.name"]
+  s.authors     = ["Vito Botta", "Casey Pugh"]
+  s.email       = ["vito@botta.name", "me@caseypugh.com"]
   s.homepage    = "https://github.com/vitobotta/share_counts"
   s.summary     = %q{The easiest way to check how many times a URL has been shared on Reddit, Digg, Twitter, Facebook, LinkedIn, GoogleBuzz and StumbleUpon!}
   s.description = %q{The easiest way to check how many times a URL has been shared on Reddit, Digg, Twitter, Facebook, LinkedIn, GoogleBuzz and StumbleUpon!}
